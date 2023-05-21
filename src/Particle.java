@@ -67,12 +67,12 @@ public class Particle {
     }
 
     public Position nextReflectionPointByParabolicPath() {
-        // y=a(x-d)^2+c
-        // y'=2a(x-d)
-        double a, d, c;
-        c = position.getY();
-        d = position.getX();
-        a = position.getY() / (2 * (position.getX() - d));
+        //y=ax^2+bx+c
+        //y'=2ax+b
+        double a, b, c;
+
+
+
         return null;
     }
 
