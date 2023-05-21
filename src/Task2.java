@@ -5,6 +5,5 @@ public class Task2 {
                 Momentum.createRandomMomentumInRange(5, 10));
 
 
-
     }
 }
