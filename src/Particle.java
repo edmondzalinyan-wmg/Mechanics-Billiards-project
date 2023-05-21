@@ -5,15 +5,22 @@ public class Particle {
 
     public Particle(Position position) {
         this.position = position;
+        this.momentum = new Momentum(0, 0);
+    }
+
+    public Particle(Position position, Momentum momentum) {
+        this.position = position;
+        this.momentum = momentum;
     }
 
     public Particle(double x, double y) {
         this.position = new Position(x, y);
     }
 
-    public void moveByTime(double t) {
-        this.position.setX(position.getX() + momentum.getX());
-        this.position.setY(position.getY() + momentum.getY());
+    public static Particle createRandom() {
+        Position pos = Position.createRandomInCircleWithRadius(1);
+        Momentum mom = Momentum.createRandomMomentum();
+        return new Particle(pos, mom);
     }
 
     private boolean isOutOfCircle(Position position) {
@@ -21,9 +28,16 @@ public class Particle {
                 + (position.getY() * position.getY()) > 1;
     }
 
-    public void moveTillReflectionAndReflect() {
+    public void moveTillReflection() {
         this.setPosition(findNextReflectionPosition());
+    }
+
+    public void reflect() {
         this.setMomentum(getReflectedMomentum());
+    }
+
+    public void reverse() {
+        this.momentum.reverse();
     }
 
     public Position findNextReflectionPosition() {
@@ -36,17 +50,16 @@ public class Particle {
             else
                 return new Position(position.getX(), -Math.sqrt(1 - position.getX() * position.getX()));
         }
-        b = position.getY() - position.getX();
+        b = position.getY() - k * position.getX();
 
         //y=kx+b & y*y+x*x=1
         double x, y;
-        if (momentum.getX() > 0 || momentum.getY() > 0) //check for direction
+        if (momentum.getX() > 0) //check for direction
             x = (Math.sqrt(-b * b + k * k + 1) - b * k) / (k * k + 1);
         else x = (-Math.sqrt(-b * b + k * k + 1) - b * k) / (k * k + 1);
 
         y = k * x + b;
         return new Position(x, y);
-
     }
 
     public Momentum getReflectedMomentum() {
@@ -64,7 +77,7 @@ public class Particle {
 
     @Override
     public String toString() {
-        return "particle at [" + position.getX() + "; " + position.getY() + "]" +
+        return "particle at (" + position.getX() + ", " + position.getY() + ")" +
                 " with momentum [" + momentum.getX() + "; " + momentum.getY() + "]";
     }
 

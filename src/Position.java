@@ -6,7 +6,7 @@ public class Position extends CoordinatePair {
         super(x, y);
     }
 
-    public static Position getRandomInCircleWithRadius(double radius) {
+    public static Position createRandomInCircleWithRadius(double radius) {
         Random random = new Random();
         double distance = random.nextDouble() * radius;
         double angle = random.nextDouble() * 360;
@@ -20,6 +20,6 @@ public class Position extends CoordinatePair {
 
     @Override
     public String toString() {
-        return "point [" + this.getX() + "; " + this.getY() + "]";
+        return "point (" + this.getX() + ", " + this.getY() + ")";
     }
 }
