@@ -36,7 +36,7 @@ public class Particle {
             else
                 return new Position(position.getX(), -Math.sqrt(1 - position.getX() * position.getX()));
         }
-        b = position.getX();
+        b = position.getY() - position.getX();
 
         //y=kx+b & y*y+x*x=1
         double x, y;
