@@ -6,10 +6,14 @@ public class Momentum extends CoordinatePair {
         super(x, y);
     }
 
-    public static Momentum createRandomMomentum() {
+    public static Momentum createRandomMomentumInRange(int lowerBound, int upperBound) {
         Random random = new Random();
-        double x = random.nextDouble();
-        double y = Math.sqrt(1 - x * x);
+        //using polar system
+        double distance = lowerBound + random.nextDouble() * (upperBound - lowerBound);
+        double angle = random.nextDouble() * 360;
+        double x = Math.cos(angle) * distance;
+        double y = Math.sin(angle) * distance;
+
         return new Momentum(x, y);
     }
 

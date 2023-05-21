@@ -19,7 +19,7 @@ public class Particle {
 
     public static Particle createRandom() {
         Position pos = Position.createRandomInCircleWithRadius(1);
-        Momentum mom = Momentum.createRandomMomentum();
+        Momentum mom = Momentum.createRandomMomentumInRange(0, 1);
         return new Particle(pos, mom);
     }
 
@@ -28,8 +28,8 @@ public class Particle {
                 + (position.getY() * position.getY()) > 1;
     }
 
-    public void moveTillReflection() {
-        this.setPosition(findNextReflectionPosition());
+    public void moveStraightToReflectionPoint() {
+        this.setPosition(nextReflectionPositionByStraightPath());
     }
 
     public void reflect() {
@@ -40,7 +40,7 @@ public class Particle {
         this.momentum.reverse();
     }
 
-    public Position findNextReflectionPosition() {
+    public Position nextReflectionPositionByStraightPath() {
         double k, b; //y=kx+b
         if (momentum.getX() != 0)
             k = momentum.getY() / momentum.getX();

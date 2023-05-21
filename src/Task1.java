@@ -9,15 +9,15 @@ public class Task1 {
         List<Position> positionList = new ArrayList<>();
         List<Position> reversePositionList = new ArrayList<>();
         for (int i = 0; i < n; i++) { //iterate the path
-            p.moveTillReflection();
+            p.moveStraightToReflectionPoint();
             p.reflect();
             positionList.add(p.getPosition());
         }
-        p.moveTillReflection();
+        p.moveStraightToReflectionPoint();
 //        do not reflect this time
         p.reverse();
         for (int i = 0; i < n; i++) { //iterate the reversed path
-            p.moveTillReflection();
+            p.moveStraightToReflectionPoint();
             p.reflect();
             reversePositionList.add(p.getPosition());
         }

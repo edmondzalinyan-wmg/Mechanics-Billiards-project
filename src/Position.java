@@ -8,13 +8,12 @@ public class Position extends CoordinatePair {
 
     public static Position createRandomInCircleWithRadius(double radius) {
         Random random = new Random();
+        //using polar system to get random point
         double distance = random.nextDouble() * radius;
         double angle = random.nextDouble() * 360;
         double x = Math.cos(angle) * distance;
-
-        distance = random.nextDouble() * radius;
-        angle = random.nextDouble() * 360;
         double y = Math.sin(angle) * distance;
+
         return new Position(x, y);
     }
 
