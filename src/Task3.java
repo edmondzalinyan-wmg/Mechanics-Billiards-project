@@ -2,6 +2,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Task3 {
+    /**
+     * For Task 3, the (0,0) point is taken in the middle of the Stadium.
+     * So the centers of circles are becoming (-L/2; 0) and (L/2,0)
+     * Computations are done on that coordinate system.
+     */
     public static void main(String[] args) {
 
         Particle p = Particle.createRandom();
